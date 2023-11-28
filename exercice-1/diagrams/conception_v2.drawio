@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-11-27T22:28:54.146Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="RwyRFLteuGQDnXB1q55F" version="22.1.4" type="device">
+<mxfile host="app.diagrams.net" modified="2023-11-28T09:17:27.470Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="y_XSwCGj2EqL44UEssfb" version="22.1.4" type="device">
   <diagram id="yeaqu1F34kHPNHF6mssP" name="Exercice Principal">
-    <mxGraphModel dx="3346" dy="2005" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2959" dy="1809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -12,7 +12,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fEL-3-x19ATJo7vxv6HR-24" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;MessageAdder&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- consumer: pthread_t&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;out&lt;span style=&quot;background-color: initial;&quot;&gt;: MSG_BLOCK&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- consumedCount: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;mconscount:&amp;nbsp;pthread_mutex_t&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;Socc:&amp;nbsp;sem_t*&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;Slib:&amp;nbsp;sem_t*&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- sum()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span&gt;+ messageAdderInit()&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ messageAdderJoin()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" parent="1" vertex="1">
+        <mxCell id="fEL-3-x19ATJo7vxv6HR-24" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;MessageAdder&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- consumer: pthread_t&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;out&lt;span style=&quot;background-color: initial;&quot;&gt;: MSG_BLOCK&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- consumedCount: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&amp;nbsp;mconscount:&amp;nbsp;pthread_mutex_t&lt;/p&gt;&amp;nbsp;- msum: pthread_mutex_t&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- sum()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span&gt;+ messageAdderInit()&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ messageAdderJoin()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="-48.70999999999998" y="-119.5" width="198.71" height="205" as="geometry" />
         </mxCell>
         <mxCell id="fEL-3-x19ATJo7vxv6HR-27" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;MultitaskingAccumulator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ main()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" parent="1" vertex="1">
@@ -43,8 +43,8 @@
         <mxCell id="fEL-3-x19ATJo7vxv6HR-65" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;DisplayManager&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;displayThread: pthread_t&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- display()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ displayManagerInit()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ displayManagerJoin()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="-48.70999999999998" y="100" width="160" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="fEL-3-x19ATJo7vxv6HR-66" value="«dataType»&lt;br&gt;&lt;b&gt;MSG_BLOCK&lt;/b&gt;" style="html=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="-270" y="-25" width="110" height="50" as="geometry" />
+        <mxCell id="fEL-3-x19ATJo7vxv6HR-66" value="«dataType»&lt;br&gt;&lt;b&gt;MSG_BLOCK&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="html=1;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="-270" y="-28" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pLuQ7xj04wKehVz2EtiJ-8" value="&lt;b&gt;MultitaskingAccumulator&lt;/b&gt;" style="html=1;" parent="1" vertex="1">
           <mxGeometry x="-1260" y="-215" width="200" height="90" as="geometry" />
@@ -248,7 +248,7 @@
         <mxCell id="pLuQ7xj04wKehVz2EtiJ-150" value="«interface»&#xa;IMessageAdder" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="350" y="-85" width="220" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="fXRlClugTOTBc5S8y01M-6" value="+ getCurrentSum(): MSG_BLOCK&#xa;+ getConsumedCount(): Integer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="pLuQ7xj04wKehVz2EtiJ-150" vertex="1">
+        <mxCell id="fXRlClugTOTBc5S8y01M-6" value="+ getCurrentSum(): MSG_BLOCK&#xa;+ getConsumedCount(): Integer&#xa;+ getStatus(): status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="pLuQ7xj04wKehVz2EtiJ-150" vertex="1">
           <mxGeometry y="38" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="pLuQ7xj04wKehVz2EtiJ-153" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="fEL-3-x19ATJo7vxv6HR-54" target="pLuQ7xj04wKehVz2EtiJ-149" edge="1">
@@ -735,6 +735,9 @@
           <mxGeometry x="-0.3881" relative="1" as="geometry">
             <mxPoint x="-49" y="-27" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="8duIR0sP1HNSZHYi9YPz-1" value="«dataType»&lt;br&gt;&lt;b&gt;status&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="html=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-270" y="50" width="110" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

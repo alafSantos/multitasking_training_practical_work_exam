@@ -3,11 +3,6 @@
 
 #include "msg.h"
 
-typedef struct status
-{
-	unsigned int consumeCount;
-	MSG_BLOCK out;
-} status;
 
 /**
 * Gets a message that represents the current value of the sum.

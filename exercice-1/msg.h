@@ -11,6 +11,12 @@ typedef struct MSG_BLOCK_TAG
 	unsigned int mData[DATA_SIZE];
 } MSG_BLOCK;
 
+typedef struct status
+{
+	unsigned int consumeCount;
+	MSG_BLOCK out;
+} status;
+
 /**
 * Message verification
 * @param mBlock the message pointer
