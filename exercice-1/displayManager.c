@@ -9,31 +9,57 @@
 #include "multitaskingAccumulator.h"
 #include "debug.h"
 
+//  #####################################################################
+//  extern pid_t gettid(void); // just to remove one warning
+//  #####################################################################
+
 // DisplayManager thread.
 pthread_t displayThread;
 
 /**
  * Display manager entry point.
  * */
-static void *display( void *parameters );
+static void *display(void *parameters);
 
-
-void displayManagerInit(void){
-	//TODO
+void displayManagerInit(void)
+{
+	// TODO
+	//  #####################################################################
+	pthread_create(&displayThread, NULL, display, NULL);
+	// #####################################################################
 }
 
-void displayManagerJoin(void){
-	//TODO	
-} 
-
-static void *display( void *parameters )
+void displayManagerJoin(void)
 {
+	// TODO
+	//  #####################################################################
+	pthread_join(displayThread, NULL);
+	// #####################################################################
+}
+
+static void *display(void *parameters)
+{
+	//  #####################################################################
+	// Hors de la boucle pour éviter de le recréer à chaque iteration
+	MSG_BLOCK tmp;
+	//  #####################################################################
+
 	D(printf("[displayManager]Thread created for display with id %d\n", gettid()));
 	unsigned int diffCount = 0;
-	while(diffCount < DISPLAY_LOOP_LIMIT){
+	while (diffCount < DISPLAY_LOOP_LIMIT)
+	{
 		sleep(DISPLAY_SLEEP_TIME);
-		//TODO
+		// TODO
+		//  #####################################################################
+		tmp = getCurrentSum();
+		messageDisplay(&tmp);
+		print(getProducedCount(), getConsumedCount());
+		diffCount++;
+		//  #####################################################################
 	}
 	printf("[displayManager] %d termination\n", gettid());
-   //TODO
+	// TODO
+	//  #####################################################################
+	pthread_exit(NULL);
+	// #####################################################################
 }
