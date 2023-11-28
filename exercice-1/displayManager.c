@@ -42,6 +42,7 @@ static void *display(void *parameters)
 	//  #####################################################################
 	// Hors de la boucle pour éviter de le recréer à chaque iteration
 	MSG_BLOCK tmp;
+	status etat;
 	//  #####################################################################
 
 	D(printf("[displayManager]Thread created for display with id %d\n", gettid()));
@@ -51,9 +52,10 @@ static void *display(void *parameters)
 		sleep(DISPLAY_SLEEP_TIME);
 		// TODO
 		//  #####################################################################
-		tmp = getCurrentSum();
+		etat = getStatus();
+		tmp = etat.out;
 		messageDisplay(&tmp);
-		print(getProducedCount(), getConsumedCount());
+		print(getProducedCount(), etat.consumeCount);
 		diffCount++;
 		//  #####################################################################
 	}

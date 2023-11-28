@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <semaphore.h>
 #include <unistd.h>
-#include <fcntl.h>
 #include <pthread.h>
 #include "messageAdder.h"
 #include "msg.h"
@@ -11,10 +10,6 @@
 #include "iAcquisitionManager.h"
 #include "debug.h"
 
-//  #####################################################################
-//  extern pid_t gettid(void); // just to remove one warning
-//  #####################################################################
-
 // consumer thread
 pthread_t consumer;
 // Message computed
@@ -22,13 +17,10 @@ volatile MSG_BLOCK out;
 // Consumer count storage
 volatile unsigned int consumeCount = 0;
 
+
 // Mutex protégeant produceCount
 pthread_mutex_t mconscount = PTHREAD_MUTEX_INITIALIZER;
-
-//  #####################################################################
-static sem_t *Socc;
-static sem_t *Slib;
-//  #####################################################################
+pthread_mutex_t msum = PTHREAD_MUTEX_INITIALIZER;
 
 /**
  * Increments the consume count.
@@ -45,9 +37,9 @@ MSG_BLOCK getCurrentSum()
 	// TODO
 	//  #####################################################################
 	MSG_BLOCK p;
-	sem_wait(Socc);
+	pthread_mutex_lock(&msum);
 	p = out;
-	sem_post(Slib);
+	pthread_mutex_unlock(&msum);
 	return p;
 	// #####################################################################
 }
@@ -64,6 +56,21 @@ unsigned int getConsumedCount()
 	// #####################################################################
 }
 
+//  #####################################################################
+status getStatus()
+{
+	status etat;
+	pthread_mutex_lock(&msum);
+	pthread_mutex_lock(&mconscount);
+	etat.out = out;
+	etat.consumeCount = consumeCount;
+	pthread_mutex_unlock(&mconscount);
+	pthread_mutex_unlock(&msum);
+	return etat;
+}
+//  #####################################################################
+
+
 void messageAdderInit(void)
 {
 	out.checksum = 0;
@@ -73,20 +80,6 @@ void messageAdderInit(void)
 	}
 	// TODO
 	//  #####################################################################
-
-	// On supprime les sémaphores si ceux-ci existent
-	sem_unlink("SoccMA");
-	sem_unlink("SlibMA");
-	// On créent les sémaphores qu'on désire
-	Socc = sem_open("SoccMA", O_CREAT, 0644, 0);
-	Slib = sem_open("SlibMA", O_CREAT, 0644, 1);
-	// On vérifie si ils sont ouverts
-	if ((Socc == SEM_FAILED) || (Slib == SEM_FAILED))
-	{
-		perror("[sem_open]");
-		return;
-	}
-
 	pthread_create(&consumer, NULL, sum, NULL);
 	// #####################################################################
 }
@@ -112,30 +105,21 @@ static void *sum(void *parameters)
 {
 	// #####################################################################
 	// Init hors de la boucle pour éviter d'avoir à recréer
-	MSG_BLOCK tmp1, tmp2;
+	MSG_BLOCK tmp;
 	// #####################################################################
 	D(printf("[messageAdder]Thread created for sum with id %d\n", gettid()));
 	unsigned int i = 0;
 	while (i < ADDER_LOOP_LIMIT)
 	{
-
+		i++;
+		sleep(ADDER_SLEEP_TIME);
 		// TODO
 		// #####################################################################
-		tmp1 = getMessage();
+		tmp = getMessage();
+		pthread_mutex_lock(&msum);
+		messageAdd(&out, &tmp);
 		incrementConsumeCount();
-		i++;
-		for (int k = 0; k < 3; k++)
-		{
-			sleep(ADDER_SLEEP_TIME);
-			tmp2 = getMessage();
-			messageAdd(&tmp1, &tmp2);
-			incrementConsumeCount();
-			i++;
-		}
-
-		sem_wait(Slib);
-		out = tmp1;
-		sem_post(Socc);
+		pthread_mutex_unlock(&msum);
 		// #####################################################################
 	}
 	printf("[messageAdder] %d termination\n", gettid());
